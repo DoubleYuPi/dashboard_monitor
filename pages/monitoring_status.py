@@ -119,7 +119,7 @@ def classify_row(row):
         norm = normalize_status(row["status_nontender"])
         sumber = "Non-Tender"
         has_kontrak = pd.notna(row.get("nilai_kontrak_nt")) and float(row.get("nilai_kontrak_nt") or 0) > 0
-        if norm in ("selesai", "berlangsung") and not has_kontrak:
+        if norm in ("selesai") and not has_kontrak:
             return row["status_nontender"], "warning", sumber   # yellow: no nilai_kontrak
         if norm == "selesai":
             return row["status_nontender"], "selesai", sumber
